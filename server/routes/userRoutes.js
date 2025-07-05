@@ -24,7 +24,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/api/users/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
