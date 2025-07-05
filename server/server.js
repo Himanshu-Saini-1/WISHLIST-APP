@@ -16,5 +16,5 @@ mongoose
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/wishlists", require("./routes/wishlistRoutes"));
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
