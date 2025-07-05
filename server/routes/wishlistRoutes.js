@@ -3,9 +3,16 @@ const router = express.Router();
 const Wishlist = require("../models/Wishlist");
 
 router.post("/", async (req, res) => {
-  const wishlist = new Wishlist(req.body);
-  await wishlist.save();
-  res.json(wishlist);
+  try {
+    const wishlist = new Wishlist(req.body);
+    await wishlist.save();
+    res.json(wishlist);
+  } catch (err) {
+    console.error("Error creating wishlist:", err.message);
+    res
+      .status(500)
+      .json({ message: "Failed to create wishlist", error: err.message });
+  }
 });
 
 router.get("/:userEmail", async (req, res) => {
